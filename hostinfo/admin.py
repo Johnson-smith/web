@@ -1,7 +1,7 @@
 from django.contrib import admin
 from hostinfo.models import Host
 # Register your models here.
-
+@admin.register(Host)
 class HostAdmin(admin.ModelAdmin):
     list_display = [
             'product',
@@ -18,4 +18,3 @@ class HostAdmin(admin.ModelAdmin):
     list_per_page= 100
     list_filter = ['product', 'account']
     search_fields = ['product', 'privateip', 'app_name', 'account' ]
-admin.site.register(Host, HostAdmin)
