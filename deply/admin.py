@@ -9,6 +9,11 @@ class DeplyAdmin(admin.ModelAdmin):
             'servername',
             'product',
             #'ip',
+            'linenos',
+            #'language',
+            #'style',
+            'created',
+
                    ]
     list_per_page= 100
     list_filter = ['product', 'servername']

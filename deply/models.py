@@ -1,4 +1,10 @@
 from django.db import models, migrations, connection, models
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
+
+LEXERS = [item for item in get_all_lexers() if item[1]]
+LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
 # Create your models here.
 class Fabu(models.Model):
@@ -45,11 +51,16 @@ class Fabu(models.Model):
             (u'agentPayCore', u'agentPayCore'),
             (u'riskControl', u'riskControl'),
      )
+    created = models.DateTimeField('发布时间', auto_now_add=True)
     version = models.CharField('git_version',max_length = 100)
     servername = models.CharField('应用',max_length = 100,  null=True)
     #product = models.CharField('环境',max_length = 50, choices=PRODUCT_CHOICES, null=True)
     #ip = models.CharField(max_length = 50,default ='-')
     product = models.CharField('环境',max_length = 50,null=True)
+    linenos = models.BooleanField(default=False)
+    language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
+    style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
     class Meta:
         verbose_name = '标签'
         verbose_name_plural = '发布记录'
+        ordering = ('created',)
