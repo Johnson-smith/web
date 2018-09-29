@@ -25,7 +25,7 @@ SECRET_KEY = '!$pi%&2b&!r4rlm)*(w%19yo=8d3(os((q-!)ro&#tv3)3ty^b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #'suit',
     'web.apps.SuitConfig',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,31 +125,6 @@ USE_TZ = True
 
 DATETIME_FORMAT = 'Y-m-d H:i:s'
 DATE_FORMAT = 'Y-m-d'
-
-#SUIT_CONFIG = {
-#    'ADMIN_NAME': '管理系统',
-#    'LIST_PER_PAGE': 10,
-#    'MENU': (
-#        'sites',
-#        {'app': 'deply', 'label': u'教学管理', 'icon': 'icon-wrench'},
-#    ),
-#}
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
-
-SUIT_CONFIG = {
-    'MENU': (
-
-        # Keep original label and models
-        'sites',
-
-        # Rename app and set icon
-        {'app': 'deply', 'label': 'wanliu-hjw', 'icon':'icon-lock'},
-
-
-    )
-}
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)

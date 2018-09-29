@@ -25,4 +25,5 @@ urlpatterns = [
     path('hostinfo/', include('hostinfo.urls')),
     path('deply/', include('deply.urls')),
     re_path('^$', index, name='index'),
+    re_path('^api/', include('rest_framework.urls', namespace='rest_framework')),
 ]
