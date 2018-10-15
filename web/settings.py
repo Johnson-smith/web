@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!$pi%&2b&!r4rlm)*(w%19yo=8d3(os((q-!)ro&#tv3)3ty^b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -126,5 +126,16 @@ USE_TZ = True
 DATETIME_FORMAT = 'Y-m-d H:i:s'
 DATE_FORMAT = 'Y-m-d'
 
+
+#PROJECT_ROOT地址为项目里面的对应app目录
+#BASE_DIR 地址为项目根目录
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+#STATIC_ROOT 是在部署静态文件时(pyhtonmanage.pycollectstatic)所有的静态文静聚合的目录,STATIC_ROOT要写成绝对地址
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#利用前缀 STATIC_URL的具体内容,来映射STATIC_ROOT
 STATIC_URL = '/static/'
+
+# BASE_DIR 是项目的绝对地址 staticfiles_dirs是用来存放所有app的静态文件聚合，部署使用（STATICFILES_DIRS告诉django,首先到STATICFILES_DIRS里面寻找静态文件,其次再到各个app的static文件夹里面找(注意, django查找静态文件是惰性查找,查找到第一个,就停止查找了)）
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
