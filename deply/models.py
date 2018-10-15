@@ -16,7 +16,7 @@ class Fabu(models.Model):
     version = models.CharField('git_version',max_length = 100)
     servername = models.CharField('应用',max_length = 100,  null=True)
     product = models.CharField('环境',max_length = 50,null=True)
-    linenos = models.BooleanField(default=False)
+    linenos = models.BooleanField(default=True)
     language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
     style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
     class Meta:
