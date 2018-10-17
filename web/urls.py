@@ -15,15 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path, re_path
-
-
 from hostinfo.views import index
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    re_path('', admin.site.urls),
     path('hostinfo/', include('hostinfo.urls')),
     path('deply/', include('deply.urls')),
-    re_path('^$', index, name='index'),
+    #re_path('^$', index, name='index'),
     re_path('^api/', include('rest_framework.urls', namespace='rest_framework')),
 ]
