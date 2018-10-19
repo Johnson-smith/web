@@ -1,5 +1,8 @@
 from django.contrib import admin
 from deply.models import Fabu
+import logging
+import django.utils.log
+import logging.handlers
 
 # Register your models here.
 @admin.register(Fabu)
@@ -20,3 +23,15 @@ class DeplyAdmin(admin.ModelAdmin):
     actions_on_top = False
     actions_on_bottom = True
     #date_hierarchy = 'created'
+
+    #根据用户判断显示内容
+    def get_list_display(self, request):
+        """
+        Return a sequence containing the fields to be displayed on the
+        changelist.
+        """
+        if request.user == 'hjw':
+            self.list_display = ('version', 'servername', 'product','created')
+        else:
+            self.list_display = ('version', 'created')
+        return self.list_display
