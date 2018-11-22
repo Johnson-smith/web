@@ -43,6 +43,23 @@ def deply_list(request):
             serializer.save()
             return JSONResponse(serializer.data, status=201)
         return JSONResponse(serializer.errors, status=400)
+    #post 如果存在put方法
+    #elif request.method == 'POST':
+    #    data = JSONParser().parse(request)
+    #    print(data)
+    #    postservername = data['servername'].strip()
+    #    postproduct = data['product'].strip()
+    #    postversion = data['version'].strip()
+    #    postip = data['ip'].strip()
+    #    status = Fabunew.objects.filter(product=postproduct, servername=postservername, ip=postip)
+    #    if status:
+    #        Fabunew.objects.filter(product=postproduct, servername=postservername, ip=postip).update(product=postproduct, servername=postservername, ip=postip, version=postversion)
+    #        return JSONResponse('201 update sucess')
+    #    else:
+    #        Fabunew.objects.create(product=postproduct, servername=postservername, ip=postip, version=postversion)
+    #        return JSONResponse('201 create sucess')
+    #    return JSONResponse('bad body 400')
+
 
 @csrf_exempt
 def deply_detail(request, pk):
